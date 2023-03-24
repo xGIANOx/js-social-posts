@@ -67,12 +67,14 @@ const posts = [
     }
 ];
 
+
 const container_element = document.querySelector('.posts-list')
 
 posts.forEach((post, i) => {
 
     const this_post = posts[i]
-
+    const date = new Date(this_post.created);
+    const formatted_date = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     const post_markup = `
     <div class="post">
      <div class="post__header">
@@ -82,7 +84,7 @@ posts.forEach((post, i) => {
             </div>
             <div class="post-meta__data">
                 <div class="post-meta__author">${this_post.author.name}</div>
-                <div class="post-meta__time">${this_post.created}</div>
+                <div class="post-meta__time">${formatted_date}</div>
             </div>                    
         </div>
     </div>
