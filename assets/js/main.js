@@ -93,7 +93,7 @@ posts.forEach((post, i) => {
     <div class="post__footer">
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#" data-postid="${this_post.id}">
+                <a class="like-button  js-like-button" data-postid="${this_post.id}">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                     <span class="like-button__label">Mi Piace</span>
                 </a>
@@ -105,4 +105,25 @@ posts.forEach((post, i) => {
     </div>            
 </div>`
 container_element.insertAdjacentHTML('beforeend', post_markup)
+
 })
+
+const like_btn_el = document.querySelectorAll('.like-button');
+
+like_btn_el.forEach(button => {
+  button.addEventListener('click', function() {
+    console.log('cliccato');
+    button.classList.toggle('liked');
+    
+    const likes_counter_el = button.closest('.js-likes').querySelector('.js-likes-counter');
+
+    if (button.classList.contains('liked')) {
+      likes_counter_el.innerHTML = parseInt(likes_counter_el.innerHTML) + 1;
+    } else {
+      likes_counter_el.innerHTML = parseInt(likes_counter_el.innerHTML) - 1;
+
+    }
+    
+  });
+});
+
