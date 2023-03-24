@@ -75,12 +75,13 @@ posts.forEach((post, i) => {
     const this_post = posts[i]
     const date = new Date(this_post.created);
     const formatted_date = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    const profile_image = this_post.author.image ? this_post.author.image : 'https://via.placeholder.com/300x300?text=' + this_post.author.name.split(' ').map(n => n[0]).join('');
     const post_markup = `
     <div class="post">
      <div class="post__header">
         <div class="post-meta">                    
             <div class="post-meta__icon">
-                <img class="profile-pic" src="${this_post.author.image}" alt="">                    
+                <img class="profile-pic" src="${profile_image}" alt="">                    
             </div>
             <div class="post-meta__data">
                 <div class="post-meta__author">${this_post.author.name}</div>
